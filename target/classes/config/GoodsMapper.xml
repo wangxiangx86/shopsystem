@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="GoodsMapper">
+  <select id="selectAll" resultType="com.wx.entity.Goods">
+    SELECT * FROM goods order by id 
+  </select>
+ 	<select id = "selectOne" resultType = "com.wx.entity.Goods">
+ 	SELECT * FROM goods where name = #{_parameter}
+ 	</select>
+ 	<insert id = "insertGoods" parameterType = "com.wx.entity.Goods">
+ 	INSERT INTO goods (goods_name,goods_price,goods_num)
+ 	values(#{goods_name},#{goods_price},#{goods_num})
+ 	</insert>
+ 	<update id="updateGoods" parameterType = "com.wx.entity.Goods">
+ 	UPDATE goods set
+ 	goods_name = #{name},goods_price=#{price},goods_num = #{num} where id=#{id}
+ 	</update>
+ 	<delete id="deleteGoods" > 
+ 	Delete FROM goods where id = #{_parameter}
+ 	</delete>
+</mapper>
